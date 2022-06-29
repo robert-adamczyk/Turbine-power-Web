@@ -1,0 +1,39 @@
+ <html lang="en">
+    <body>
+            <section>
+                            <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg bg-dark navbar-dark ">
+                  <!-- Container wrapper -->
+                  <div class="container-fluid justify-content-center">
+                    <!-- Navbar brand -->
+                    <a class="navbar-brand" href="{% url 'home_page' %}">TurbinePower Web</a>
+
+                      <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ms-auto">
+                                <li class="nav-item"><a class="nav-link" href="https://github.com/zdpytpol45-project3/Weather_portal">Contact</a></li>
+                            {% if user.is_authenticated %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'password_change' %}">Password Change</a></li>
+
+                            {% else %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'users-registration' %}">Register</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                  </div>
+                </nav>
+                <!-- Navbar -->
+            </section>
+        {% block content %}
+        <div class="user_information" xmlns="http://www.w3.org/1999/html">
+            <div>
+                <h2 class="user_hello">Hello, {{ user.username|default:'Guest' }} !</h2>
+            </div>
+            <div class="user_button">
+            </div>
+            Hello
+        </div>
+        {% endblock %}
+    </body>
+</html>
