@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.exceptions import ValidationError
+from django.contrib.auth import get_user_model
 from .models import User
 
 
@@ -42,3 +43,16 @@ class LoginForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ['username', 'password']
+
+'''
+class UpdateUserForm(forms.ModelForm):
+    email = forms.EmailField(required=True,
+                             widget=forms.TextInput(attrs={'class': 'form-control'}))
+    username = forms.CharField(required=True,
+                               widget=forms.TextInput(attrs={'class': 'form-control'}))
+
+    class Meta:
+        model = get_user_model()
+        fields = ['email', 'username', 'first_name', 'last_name', 'birthdate', 'addr_city', 'addr_street',
+                  'addr_post_code', 'mobile_nr']
+'''
