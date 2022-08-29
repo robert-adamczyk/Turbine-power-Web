@@ -1,74 +1,79 @@
+{% extends 'turbineweb/turbineweb_extends.html' %}
 
-{% block title %} Registration form {% endblock title%}
-    <div class="form-content my-3 p-3">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <div class="card shadow-lg border-0 rounded-lg mt-0 mb-5">
-                        <div class="card-header justify-content-center">
-                            <h3 class="font-weight-light my-4 text-center">Create account</h3>
-                        </div>
-                        <div class="card-body">
-                            <form method="POST">
-                                {% csrf_token %}
-                                {% if form.errors %}
-                                    <div class="alert alert-danger alert-dismissible" role="alert">
-                                        <div id="form_errors">
-                                            {% for key, value in form.errors.items %}
-                                                <strong>{{ value }}</strong>
-                                            {% endfor %}
-                                        </div>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+{% block section_one %}
+    <div class="view">
+        <div class="form-content my-3 p-3">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="card shadow-lg border-0 rounded-lg mt-0 mb-3">
+                            <div class="card-header justify-content-center">
+                              <h3 class="font-weight-light my-1 text-center">Create account</h3>
+                            </div>
+                            {% if form.errors %}
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                    <div id="form_errors">
+                                        {% for key, value in form.errors.items %}
+                                            <strong>{{ value }}</strong>
+                                        {% endfor %}
                                     </div>
-                                {% endif %}
-
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="small mb-1">Nazwa użytkownika</label>
-                                            {{ form.username }}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="small mb-1">Email</label>
-                                            {{ form.email }}
-                                        </div>
-                                    </div>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="small mb-1">Hasło</label>
-                                            <br>
-                                            {{ form.password1 }}
-                                            {{ form.errors.password }}
+                            {% endif %}
+                            <div class="card-body">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-row">
+                                        <div class="col-md-10 offset-md-1">
+                                            <div class="form-group">
+                                                <label class="small mb-1">Username</label>
+                                                {{ form.username }}
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="small mb-1">Powtórz hasło</label>
-                                            {{ form.password2 }}
+                                        <div class="col-md-10 offset-md-1">
+                                            <div class="form-group">
+                                              <label class="small mb-1">Email</label>
+                                              {{ form.email }}
+                                            </div>
                                         </div>
-                                         </div>
                                     </div>
+                                    <div class="form-row">
+                                        <div class="col-md-10 offset-md-1">
+                                            <div class="form-group">
+                                              <label class="small mb-1">Password</label>
+                                              {{ form.password1 }}
+                                              {{ form.errors.password }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-10 offset-md-1">
+                                            <div class="form-group">
+                                              <label class="small mb-1">Repeat password</label>
+                                              {{ form.password2 }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                     <div class="form-group mt-4 mb-0">
+                                        <button type="submit" class="col-md-12 btn btn-dark">Create Account</button><br><br>
+                                    </div>
+                                </form>
+                                <div class="card-footer text-center">
+                                <div class="small">
+                                    <a href="{% url 'login' %}" class="btn btn-dark btn-lg" role="button">Already have an account? Login</a>
                                 </div>
-                                <div class="form-group mt-4 mb-0">
-                                    <button type="submit" class="col-md-12 btn btn-dark">Utwórz konto</button><br><br>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="card-footer text-center">
-                            <div class="small">
-                                <a href="{% url 'login' %}" class="btn btn-dark btn-lg" role="button">Masz już konto? Zaloguj</a>
                             </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+{% endblock %}

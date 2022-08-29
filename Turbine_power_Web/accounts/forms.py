@@ -6,10 +6,22 @@ from .models import User
 
 
 class CustomUserCreationForm(UserCreationForm):
-    username = forms.CharField(label='Username', required=True)
-    email = forms.EmailField(label='email', required=True)
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+    username = forms.CharField(label='Username', required=True,
+                               widget=forms.TextInput(attrs={'placeholder': 'username',
+                                                             'class': 'form-control',
+                                                             }))
+    email = forms.EmailField(label='email', required=True,
+                             widget=forms.TextInput(attrs={'placeholder': 'email',
+                                                           'class': 'form-control',
+                                                           }))
+    password1 = forms.CharField(label='Password',
+                                widget=forms.PasswordInput(attrs={'placeholder': 'Password',
+                                                                  'class': 'form-control',
+                                                                  }))
+    password2 = forms.CharField(label='Password confirmation',
+                                widget=forms.PasswordInput(attrs={'placeholder': 'Repeat password',
+                                                                  'class': 'form-control',
+                                                                  }))
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -35,24 +47,9 @@ class LoginForm(AuthenticationForm):
                                required=True,
                                widget=forms.PasswordInput(attrs={'placeholder': 'Hasło',
                                                                  'class': 'form-control',
-                                                                 'data-toggle': 'password',
-                                                                 'id': 'password',
-                                                                 'name': 'password',
                                                                  }))
 
     class Meta:
         model = User
         fields = ['username', 'password']
 
-'''
-class UpdateUserForm(forms.ModelForm):
-    email = forms.EmailField(required=True,
-                             widget=forms.TextInput(attrs={'class': 'form-control'}))
-    username = forms.CharField(required=True,
-                               widget=forms.TextInput(attrs={'class': 'form-control'}))
-
-    class Meta:
-        model = get_user_model()
-        fields = ['email', 'username', 'first_name', 'last_name', 'birthdate', 'addr_city', 'addr_street',
-                  'addr_post_code', 'mobile_nr']
-'''
