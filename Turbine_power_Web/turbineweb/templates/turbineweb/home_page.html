@@ -1,5 +1,29 @@
- {% extends 'turbineweb/turbineweb_extends.html' %}
+{% extends 'turbineweb/turbineweb_extends.html' %}
+{% load staticfiles %}
 
 {% block section_one %}
-    Hallo
+    <main>
+      <div id="home-page-bg">
+        <div id="slider">
+          <div id="top-row">
+            <img class="arrow arrow-left" id="arrow-left" src="/static/image/arrow-left.png" />
+            <div id="slides-container">
+              <img id="slide1" class="slide active" src="/static/image/about-us.png">
+              <img id="slide2" class="slide" src="/static/image/turbine-models.png" >
+              <img id="slide3" class="slide" src="/static/image/calculate-power.png" >
+            </div>
+
+            <img class="arrow arrow-right" id="arrow-right" src="/static/image/arrow-right.png" />
+          </div>
+          <div id="bottom-row">
+            <div id="dots">
+              <div id="dot1" class="dot"></div>
+              <div id="dot2" class="dot"></div>
+              <div id="dot3" class="dot"></div>
+            </div>
+          </div>
+        </div>
+        </div>
+    </main>
+    <script src="/static/js/home_page.js"></script>
 {% endblock %}

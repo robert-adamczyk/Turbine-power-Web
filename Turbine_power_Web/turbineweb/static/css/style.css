@@ -1,3 +1,12 @@
+.footer {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#home-page-bg {
+  display: flex;
+  justify-content: center;
+}
 
 #slider {
   width: 768px;
@@ -6,7 +15,7 @@
 
 #slider #top-row {
   width: 768px;
-  height: 420px;
+  height: 420px;w
   overflow: hidden;
 }
 
